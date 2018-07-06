@@ -1,8 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:my_fast_app/learn02.dart';
+import 'package:my_fast_app/bottom_navigation_bar.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new MaterialApp(
+  title: "hhh",
+  home: new MyBottomNavigationBar(
+    titleText: "底部导航栏测试",
+    currentIndex: 1,
+    elements: <MyBottomNavigationBarItem>[
+      new MyBottomNavigationBarItem(
+        body: new Center(
+          child: new Text("第一页"),
+        ),
+        navigation: new BottomNavigationBarItem(
+            icon: new Icon(Icons.star),
+            title: new Text("动态"),
+        )
+      ),
+      new MyBottomNavigationBarItem(
+        body: new ListView(
+                children: <Widget>[
+                  new ImagesSection(),
+                  new Learn02App(),
+                  new ButtonGroup(),
+                  new TextDescription(),
+                ],
+              ),
+        navigation: new BottomNavigationBarItem(
+            icon: new Icon(Icons.home),
+            title: new Text("主页")
+        )
+      ),
+      new MyBottomNavigationBarItem(
+        body: new Center(
+          child: new Text("第三页"),
+        ),
+        navigation: new BottomNavigationBarItem(
+            icon: new Icon(Icons.near_me),
+            title: new Text("位置"),
+        )
+      )
+    ],
+  ),
+));
 
 class MyApp extends StatelessWidget {
   @override
